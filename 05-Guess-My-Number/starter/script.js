@@ -10,7 +10,7 @@
 // document.querySelector('.guess').value = 13;
 // console.log(document.querySelector('.guess').value);
 
-const secretNumber = Math.trunc(Math.random() * 20) + 1;
+let secretNumber = Math.trunc(Math.random() * 20) + 1;
 console.log(secretNumber);
 let score = 20;
 
@@ -45,4 +45,12 @@ document.querySelector('.check').addEventListener('click', function () {
     }
     document.querySelector('.score').textContent = score;
   }
+});
+
+document.querySelector('.again').addEventListener('click', function () {
+  score = 20;
+  document.querySelector('.score').textContent = score;
+
+  secretNumber = Math.trunc(Math.random() * 20) + 1;
+  console.log(secretNumber);
 });
