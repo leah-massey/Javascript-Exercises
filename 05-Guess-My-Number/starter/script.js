@@ -50,7 +50,16 @@ document.querySelector('.check').addEventListener('click', function () {
 document.querySelector('.again').addEventListener('click', function () {
   score = 20;
   document.querySelector('.score').textContent = score;
+  //change size of secret number box back to original
+  document.querySelector('.number').style.width = '15rem';
+  //change colour back to original
+  document.querySelector('body').style.backgroundColor = '#222';
 
   secretNumber = Math.trunc(Math.random() * 20) + 1;
+  //hide new secret number
+  document.querySelector('.number').textContent = '?';
+  //return input box to empty
+  document.querySelector('.guess').value = '';
+
   console.log(secretNumber);
 });
