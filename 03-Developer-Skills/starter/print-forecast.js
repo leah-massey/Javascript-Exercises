@@ -23,5 +23,20 @@ TEST DATA 2: [12, 5, -5, 0, 4]
 // - insert the extra text
 // - join all elements into one string
 // log string to console 
+*/
 
+const temperature = [12, 5, -5, 0, 4];
 
+const printForecast = function (arr) {
+  for (let i = 0; i < arr.length; i++) {
+    if (i === 0) {
+      arr[i] = `${arr[i]} degrees in ${i + 1} day ...`;
+    } else {
+      arr[i] = `${arr[i]} degrees in ${i + 1} days ...`;
+    }
+  }
+  const forecast = arr.join(' ');
+  console.log(forecast);
+};
+
+printForecast(temperature);
