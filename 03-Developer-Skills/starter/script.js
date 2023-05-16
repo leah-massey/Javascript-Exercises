@@ -1,10 +1,10 @@
 // Remember, we're gonna use strict mode in all scripts now!
-'use strict';
+// 'use strict';
 
-const x = 23;
+// const x = 23;
 
-const calcAge = birthYear => 2037 - birthYear;
-console.log('up and running!');
+// const calcAge = birthYear => 2037 - birthYear;
+// console.log('up and running!');
 
 /////////////////////////////////
 //EXERCISE - thermostat
@@ -23,3 +23,15 @@ const temperatures = [3, -2, -6, -1, 'error', 9, 13, 17, 15, 14, 9, 5];
 // - find max value in array
 // - find min value in array
 // - subtract max from min
+
+const calcTempAmplitude = function (array) {
+  let max = array[0];
+  for (let i = 0; i < array.length; i++) {
+    if (array[i] > max) {
+      max = array[i];
+    }
+  }
+  console.log(max);
+};
+
+calcTempAmplitude([9, 13, 17, 15, 14, 9, 5]);
