@@ -32,6 +32,14 @@ const calcTempAmplitude = function (array) {
     }
   }
   console.log(max);
+
+  let min = array[0];
+  for (let i = 0; i < array.length; i++) {
+    if (array[i] < min) {
+      min - array[i];
+    }
+  }
+  console.log(min);
 };
 
 calcTempAmplitude([9, 13, 17, 15, 14, 9, 5]);
