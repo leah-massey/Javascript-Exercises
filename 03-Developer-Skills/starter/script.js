@@ -26,20 +26,16 @@ const temperatures = [3, -2, -6, -1, 'error', 9, 13, 17, 15, 14, 9, 5];
 
 const calcTempAmplitude = function (array) {
   let max = array[0];
+  let min = array[0];
+
   for (let i = 0; i < array.length; i++) {
     if (array[i] > max) {
       max = array[i];
-    }
-  }
-  console.log(max);
-
-  let min = array[0];
-  for (let i = 0; i < array.length; i++) {
-    if (array[i] < min) {
+    } else if (array[i] < min) {
       min - array[i];
     }
   }
-  console.log(min);
+  console.log(max, min);
 };
 
 calcTempAmplitude([9, 13, 17, 15, 14, 9, 5]);
