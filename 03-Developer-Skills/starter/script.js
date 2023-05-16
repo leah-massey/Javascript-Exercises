@@ -29,7 +29,9 @@ const calcTempAmplitude = function (array) {
   let min = array[0];
 
   for (let i = 0; i < array.length; i++) {
-    if (array[i] > max) {
+    if (isNaN(array[i])) {
+      continue;
+    } else if (array[i] > max) {
       max = array[i];
     } else if (array[i] < min) {
       min - array[i];
