@@ -13,6 +13,7 @@
 let secretNumber = Math.trunc(Math.random() * 20) + 1;
 console.log(secretNumber);
 let score = 20;
+let highscore = 0;
 
 document.querySelector('.check').addEventListener('click', function () {
   const guess = Number(document.querySelector('.guess').value);
@@ -27,6 +28,11 @@ document.querySelector('.check').addEventListener('click', function () {
     document.querySelector('.message').textContent =
       'Correct! You have won a point! 🍾';
     score++;
+    if (score > highscore) {
+      highscore = score;
+      document.querySelector('.highscore').textContent = score;
+    }
+
     document.querySelector('.number').textContent = secretNumber;
     document.querySelector('.score').textContent = score;
     //change colour when player wins
@@ -50,6 +56,7 @@ document.querySelector('.check').addEventListener('click', function () {
 document.querySelector('.again').addEventListener('click', function () {
   score = 20;
   document.querySelector('.score').textContent = score;
+  document.querySelector('.message').textContent = 'Start guessing....';
   //change size of secret number box back to original
   document.querySelector('.number').style.width = '15rem';
   //change colour back to original
