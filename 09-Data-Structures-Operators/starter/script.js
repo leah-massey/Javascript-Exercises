@@ -37,3 +37,7 @@ console.log(first, last);
 //nested destructuring of the same two elements
 const [i, , [j, k]] = nested;
 console.log(i, j, k);
+
+//Defauly values (when we don't know the array - useful when we get data from an api)
+const [p, q, r] = [8, 9]; //this won't work as 'r' doesn't have a value
+const [p = 1, q = 1, r = 1] = [8, 9]; //this will now work and 'r' will have the value of 1
