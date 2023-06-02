@@ -27,3 +27,13 @@ const restaurant = {
     },
   },
 };
+
+const nested = [2, 4, [5, 6]];
+
+//destructure the first and last elements of the array
+const [first, , last] = nested;
+console.log(first, last);
+
+//nested destructuring of the same two elements
+const [i, , [j, k]] = nested;
+console.log(i, j, k);
