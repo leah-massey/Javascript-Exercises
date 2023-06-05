@@ -47,13 +47,67 @@ const restaurant = {
       `Here is your delicious pasta with ${ing1}, ${ing2} and ${ing3}`
     );
   },
+
+  //uses the rest operator to list the first ingredient and then all others within an array
+  orderPizza: function (mainIngredient, ...otherIngredients) {
+    console.log(mainIngredient);
+    console.log(otherIngredients);
+  },
 };
+
+//Y REST PATTERNS - destructuring
+
+//* where we would write variable names separated by commas
+
+//* collects multiple elements and condense them into an array
+//* used on the LH side of the assignment operator (=)
+//* pretty much the opposite of the spread operator
+//* rest element must be the last element
+//* there can only ever be one rest in any destructring assignemnt
+
+//* rest versus spread:
+
+const array = [1, 2, 3, ...[5, 6]]; //spread example
+
+const [x, y, ...others] = [1, 2, 3, 4, 5, 6]; //rest example
+console.log(x, y, others);
+//=> 1 2 [3, 4, 5, 6]
+
+const [pizza, , risotto, ...otherFood] = [
+  ...restaurant.mainMenu,
+  ...restaurant.starterMenu,
+];
+console.log(pizza, risotto, otherFood);
+
+//* using rest pattern on an object:
+const { sat, ...weekdays } = restaurant.openingHours;
+console.log(weekdays);
+// this will show all weekday openings and NOT saturday
+
+//Y REST PATTERNS - functions
+//=> we are compressing all numbers into arrays, then adding.
+// we can accept any number of parameters
+const add = function (...numbers) {
+  let sum = 0;
+  for (let i = 0; i < numbers.length; i++) {
+    sum += numbers[i];
+  }
+  console.log(sum);
+};
+
+add(2, 3); //=> [5]
+add(3, 5, 7, 2); //=> [17]
+add(2, 5, 6); //=> [13]
+
+restaurant.orderPizza('mushrooms', 'onion', 'olives');
 
 //Y THE SPREAD OPERATOR
 
-// * takes all the values of an array and acts in place of writing out each value in the array - i.e when we need to write multiple values separated by commas.
+//* Used when building a new array or when passing multiple values into a function.
 
-//* We can only use the spread operator when building an array or when passing values into a function.
+//* expands an array into individual elements
+
+// * takes all the values of an array and acts in place of writing out each value in the array - i.e when we otherwise write multiple values separated by commas.
 
 const arr = [7, 8, 9];
 const newArr = [1, 2, ...arr];
@@ -80,12 +134,13 @@ console.log(letters);
 
 //* EXAMPLE: using the spread operator to place pasta order
 //first, create prompts:
+
 const ingredients = [
   // prompt("Let's make pasta! Ingredient 1?"),
   // prompt('Ingredient 2'),
   // prompt('Ingredient 3'),
 ];
-console.log(ingredients);
+// console.log(ingredients);
 
 //*using the spread operator to write the function
 restaurant.orderPasta(...ingredients);
@@ -102,7 +157,7 @@ restaurantCopy.name = 'Ristorante Roma';
 console.log(restaurantCopy.name); //=> "Ristorante Roma"
 console.log(restaurant.name); //=> Classico Italiano
 
-//Y DESCTRUCTURING AN OBJECT
+//Y DESTRUCTURING AN OBJECT
 
 restaurant.orderDelivery({
   time: '22:30',
