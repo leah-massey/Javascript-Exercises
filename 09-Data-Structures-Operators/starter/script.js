@@ -41,7 +41,68 @@ const restaurant = {
       `order received: ${this.starterMenu[starterIndex]}, and ${this.mainMenu[mainIndex]} ordered at ${time}, going to ${address}`
     );
   },
+
+  orderPasta: function (ing1, ing2, ing3) {
+    console.log(
+      `Here is your delicious pasta with ${ing1}, ${ing2} and ${ing3}`
+    );
+  },
 };
+
+//Y THE SPREAD OPERATOR
+
+// * takes all the values of an array and acts in place of writing out each value in the array - i.e when we need to write multiple values separated by commas.
+
+//* We can only use the spread operator when building an array or when passing values into a function.
+
+const arr = [7, 8, 9];
+const newArr = [1, 2, ...arr];
+//=> [1, 2, 7, 8, 9]
+
+console.log(...newArr);
+//=> 1 2 7 8 9
+
+//* Creates a new variable that includes all items from mainMenu array, PLUS Gnocchi
+const newMenu = [...restaurant.mainMenu, 'Gnocchi'];
+
+//* Copy Arrray - using spread operator:
+const mainMenuCopy = [...restaurant.mainMenu];
+
+//* Join 2 arrays - using spread operator:
+const fullMenu = [...restaurant.starterMenu, ...restaurant.mainMenu];
+
+//* Iterables: arrays, strings, maps, sets. NOT objects
+
+const str = 'Leah';
+const letters = [...str, ' ', 'S.'];
+console.log(letters);
+//=> ["L", "e", "a", "h", " ", "S."]
+
+//* EXAMPLE: using the spread operator to place pasta order
+//first, create prompts:
+const ingredients = [
+  // prompt("Let's make pasta! Ingredient 1?"),
+  // prompt('Ingredient 2'),
+  // prompt('Ingredient 3'),
+];
+console.log(ingredients);
+
+//*using the spread operator to write the function
+restaurant.orderPasta(...ingredients);
+//=> "Here is your delicious pasta with egg, bean and sausage"
+
+//* EXAMPLE: using the spread operator on objects (even though they're not iterable)
+
+const newRestaurant = { foundedIn: 1998, ...restaurant, founder: 'Guiseppe' };
+console.log(newRestaurant);
+
+//* we can also create a shallow copy as with arrays:
+const restaurantCopy = { ...restaurant };
+restaurantCopy.name = 'Ristorante Roma';
+console.log(restaurantCopy.name); //=> "Ristorante Roma"
+console.log(restaurant.name); //=> Classico Italiano
+
+//Y DESCTRUCTURING AN OBJECT
 
 restaurant.orderDelivery({
   time: '22:30',
