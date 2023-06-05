@@ -55,7 +55,50 @@ const restaurant = {
   },
 };
 
-//Y REST PATTERNS - destructuring
+//G The Nullish Coalescing Operator
+restaurant.numGuests = 0;
+const guests2 = restaurant.numGuests || 10;
+console.log(guests2);
+
+//* Nullish: null and undefind (not 0 or "")
+const guestCorrect = restaurant.numGuests ?? 10;
+console.log(guestCorrect);
+
+//G SHORT CIRCUITING  (&& AND \\)
+//* can use any data type, can return any data type
+//* there can be any number of values, the first truthy value will be chosen and there will be a short circuit- unless none are truthy, in whcih case the last is returned
+
+//B OR OPERATOR
+//* if the first is true, the operator will immediately return that first value. The other operand won't even be evaluated :
+
+console.log(3 || 'Leah'); // 3
+console.log('' || 'Leah'); // Leah
+console.log(true || 0); // true
+console.log(undefined || null); // null - even though null is also a falsy operator.
+
+//* EXAMPLE showing two ways to to get an answer
+
+//* 1) using ternary operator
+const guests1 = restaurant.numGuests ? restaurant.numGuests : 10;
+console.log(guests1); //=> 10
+
+//* 2) using and/or operator (better choice - a lot easier)
+const guests2 = restaurant.numGuests || 10;
+console.log(guests2);
+
+//B AND OPERATOR
+//* only true when all of operator is true
+
+console.log(0 && 'jonas'); // short circuits immediately as the 0 is falsy
+
+//* 1)
+if (restaurant.orderPizza) {
+  restaurant.orderPizza('mushrooms', 'spinach');
+}
+//* 2)
+restaurant.orderPizza && restaurant.orderPizza('mushrooms', 'spinach');
+
+//G REST PATTERNS - destructuring
 
 //* where we would write variable names separated by commas
 
@@ -65,7 +108,7 @@ const restaurant = {
 //* rest element must be the last element
 //* there can only ever be one rest in any destructring assignemnt
 
-//* rest versus spread:
+//B rest versus spread:
 
 const array = [1, 2, 3, ...[5, 6]]; //spread example
 
@@ -84,7 +127,7 @@ const { sat, ...weekdays } = restaurant.openingHours;
 console.log(weekdays);
 // this will show all weekday openings and NOT saturday
 
-//Y REST PATTERNS - functions
+//G REST PATTERNS - functions
 //=> we are compressing all numbers into arrays, then adding.
 // we can accept any number of parameters
 const add = function (...numbers) {
@@ -101,7 +144,7 @@ add(2, 5, 6); //=> [13]
 
 restaurant.orderPizza('mushrooms', 'onion', 'olives');
 
-//Y THE SPREAD OPERATOR
+//G THE SPREAD OPERATOR
 
 //* Used when building a new array or when passing multiple values into a function.
 
@@ -151,13 +194,13 @@ restaurant.orderPasta(...ingredients);
 const newRestaurant = { foundedIn: 1998, ...restaurant, founder: 'Guiseppe' };
 console.log(newRestaurant);
 
-//* we can also create a shallow copy as with arrays:
+//* we can also create a shallow copG as with arrays:
 const restaurantCopy = { ...restaurant };
 restaurantCopy.name = 'Ristorante Roma';
 console.log(restaurantCopy.name); //=> "Ristorante Roma"
 console.log(restaurant.name); //=> Classico Italiano
 
-//Y DESTRUCTURING AN OBJECT
+//G DESTRUCTURING AN OBJECT
 
 restaurant.orderDelivery({
   time: '22:30',
@@ -202,14 +245,14 @@ const {
 } = openingHours;
 console.log(`open:`, open, `close:`, close);
 
-// * DESTRUCTURING AN ARRAY destructure the first and last elements of the array
+// * DESTRUCTURING AN ARRAG destructure the first and last elements of the array
 
 const nested = [2, 4, [5, 6]];
 
 const [first, , last] = nested;
 console.log(first, last);
 
-// * NESTED ARRAY destructuring of the same two elements
+// * NESTED ARRAG destructuring of the same two elements
 const [i, , [j, k]] = nested;
 console.log(i, j, k);
 
