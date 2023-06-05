@@ -55,6 +55,36 @@ const restaurant = {
   },
 };
 
+const rest1 = {
+  name: 'Capri',
+  numGuests: 20,
+};
+
+const rest2 = {
+  name: 'La Piazza',
+  owner: 'John',
+};
+
+//G ASSIGNMENT OPERATORS
+
+//* OR assignment operator
+//set default num of guests for any missing
+// rest1.numGuests = rest1.numGuests || 10;
+// rest2.numGuests = rest2.numGuests || 10;
+
+rest1.numGuests ||= 10; //this is a quicker way than the above.
+rest2.numGuests ||= 10;
+
+console.log(rest1, rest2);
+
+//* Nullish assignment operator (null or undefined)
+rest1.numGuests ??= 10;
+rest2.numGuests ??= 10;
+
+//* AND assignment operator
+rest1.owner &&= 'new name'; // nothing will be added to the rest1 object here
+rest2.owner &&= 'new name'; // the name "John" will be updated to "new name"
+
 //G The Nullish Coalescing Operator
 restaurant.numGuests = 0;
 const guests2 = restaurant.numGuests || 10;
@@ -83,8 +113,8 @@ const guests1 = restaurant.numGuests ? restaurant.numGuests : 10;
 console.log(guests1); //=> 10
 
 //* 2) using and/or operator (better choice - a lot easier)
-const guests2 = restaurant.numGuests || 10;
-console.log(guests2);
+const guests3 = restaurant.numGuests || 10;
+console.log(guests3);
 
 //B AND OPERATOR
 //* only true when all of operator is true
