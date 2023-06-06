@@ -96,7 +96,7 @@ console.log(guestCorrect);
 
 //G SHORT CIRCUITING  (&& AND \\)
 //* can use any data type, can return any data type
-//* there can be any number of values, the first truthy value will be chosen and there will be a short circuit- unless none are truthy, in whcih case the last is returned
+//* there can be any number of values, the first truthy value will be chosen and there will be a short circuit- unless none are truthy, in which case the last is returned
 
 //B OR OPERATOR
 //* if the first is true, the operator will immediately return that first value. The other operand won't even be evaluated :
@@ -129,6 +129,7 @@ if (restaurant.orderPizza) {
 restaurant.orderPizza && restaurant.orderPizza('mushrooms', 'spinach');
 
 //G REST PATTERNS - destructuring
+//* when you hear the word 'remaining', this is often useful!
 
 //* where we would write variable names separated by commas
 
@@ -141,6 +142,7 @@ restaurant.orderPizza && restaurant.orderPizza('mushrooms', 'spinach');
 //B rest versus spread:
 
 const array = [1, 2, 3, ...[5, 6]]; //spread example
+//=> [1, 2, 3, 5, 6]
 
 const [x, y, ...others] = [1, 2, 3, 4, 5, 6]; //rest example
 console.log(x, y, others);
@@ -158,8 +160,8 @@ console.log(weekdays);
 // this will show all weekday openings and NOT saturday
 
 //G REST PATTERNS - functions
-//=> we are compressing all numbers into arrays, then adding.
-// we can accept any number of parameters
+//* EXAMPLE Create add function by compressing all numbers into arrays, then adding.
+//* We can accept any number of parameters for a rest pattern
 const add = function (...numbers) {
   let sum = 0;
   for (let i = 0; i < numbers.length; i++) {
@@ -197,8 +199,10 @@ const mainMenuCopy = [...restaurant.mainMenu];
 
 //* Join 2 arrays - using spread operator:
 const fullMenu = [...restaurant.starterMenu, ...restaurant.mainMenu];
+console.log(fullMenu);
+//=> will return all starters followed by all mains
 
-//* Iterables: arrays, strings, maps, sets. NOT objects
+//* Iterables are : arrays, strings, maps, sets. NOT objects
 
 const str = 'Leah';
 const letters = [...str, ' ', 'S.'];
@@ -215,7 +219,7 @@ const ingredients = [
 ];
 // console.log(ingredients);
 
-//*using the spread operator to write the function
+//* using the spread operator to write the function
 restaurant.orderPasta(...ingredients);
 //=> "Here is your delicious pasta with egg, bean and sausage"
 
@@ -223,14 +227,17 @@ restaurant.orderPasta(...ingredients);
 
 const newRestaurant = { foundedIn: 1998, ...restaurant, founder: 'Guiseppe' };
 console.log(newRestaurant);
+//lists all of the restuarant object as well as founded and founder
 
-//* we can also create a shallow copG as with arrays:
+//* we can also create a shallow copy as with arrays:
 const restaurantCopy = { ...restaurant };
 restaurantCopy.name = 'Ristorante Roma';
 console.log(restaurantCopy.name); //=> "Ristorante Roma"
 console.log(restaurant.name); //=> Classico Italiano
 
 //G DESTRUCTURING AN OBJECT
+
+//* give new values to object key value pairs:
 
 restaurant.orderDelivery({
   time: '22:30',
@@ -239,6 +246,8 @@ restaurant.orderDelivery({
   starterIndex: 2,
 });
 
+//* you can update as many or few as you like:
+
 restaurant.orderDelivery({
   address: 'London',
 });
@@ -246,20 +255,23 @@ restaurant.orderDelivery({
 //* DESTRUCTURING AN OBJECT
 //* These new variable names must exactly match the property names of the object. The order you write them, however doesn't matter.
 const { name, openingHours, categories } = restaurant;
-console.log(name, openingHours, categories);
+//console.log(name, openingHours, categories);
+//=> returns name openingHours and tags of object
 
-//* We can rename the variables in the destructured object like this: (really useful when dealing with third party data  )
+//* RENAME VARIABLES - We can rename the variables in the destructured object like this: (really useful when dealing with third party data  )
 const {
   name: restaurantName,
   openingHours: hours,
   categories: tags,
 } = restaurant;
-console.log(`renamed variables: ${(restaurantName, hours, tags)}`);
+//console.log(restaurantName, hours, tags);
+//=> returns name openingHours and tags of object
 
 // * DEFAULT VALUES
 // * (in this case []) can be added in case there isn't a property matching the variable name
 const { menu = [], starterMenu: starters = [] } = restaurant;
-console.log(menu, starters);
+//console.log(menu, starters);
+//=> [] (4) ['Focaccia', 'Bruschetta', 'Garlic Bread', 'Caprese Salad']
 
 //* MUTATING VARIABLES
 //* Must always be in parenthesis (otherwise program is expecting a function)
@@ -267,24 +279,28 @@ let a = 111;
 let b = 999;
 const obj = { a: 23, b: 7, c: 14 };
 ({ a, b } = obj);
-console.log(a, b); // a is now 23, b is now 7.
+//console.log(a, b);
+//=> 23 7
 
-//* NESTED OBJECTS
+//* destructuring NESTED OBJECTS
 const {
   fri: { open, close },
 } = openingHours;
-console.log(`open:`, open, `close:`, close);
+//console.log(open, close);
+//=> 11 23
 
-// * DESTRUCTURING AN ARRAG destructure the first and last elements of the array
+// * DESTRUCTURING AN ARRAY destructure the first and last elements of the array
 
 const nested = [2, 4, [5, 6]];
 
 const [first, , last] = nested;
-console.log(first, last);
+//console.log(first, last);
+//=> 2, 5,6
 
-// * NESTED ARRAG destructuring of the same two elements
+// * NESTED ARRAY destructuring of the same two elements
 const [i, , [j, k]] = nested;
-console.log(i, j, k);
+//console.log(i, j, k);
+//=> 2 5 6
 
 // * DEFAULT VALUES (when we don't know the array - useful when we get data from an api)
 // const [p, q, r] = [8, 9]  //*this won't work as 'r' doesn't have a value
