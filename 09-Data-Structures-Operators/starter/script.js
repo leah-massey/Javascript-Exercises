@@ -65,6 +65,35 @@ const rest2 = {
   owner: 'John',
 };
 
+//G FOR-OF LOOPS
+//* loops over an array
+//* can still use the 'break' key word
+const menu2 = [...restaurant.starterMenu, ...restaurant.mainMenu];
+for (const foodItem of menu2) console.log(foodItem);
+//returns a list of all items in the menu
+//'item' represents the current ekeemnt of each iteration.
+
+//* .entries
+//* this method creates an array of the elements and their corresponding index numbers. (useful when making a numbered list?)
+for (const foodItem of menu2.entries()) {
+  console.log(`${foodItem[0] + 1}: ${foodItem[1]}`);
+}
+//makes a nice listed menu
+// 1: Focaccia
+// 2: Bruschetta
+// 3: Garlic Bread
+// 4: Caprese Salad
+// 5: Pizza
+// 6: Pasta
+// 7: Risotto
+
+//* a destructured version of the above (better!)
+for (const [i, el] of menu2.entries()) {
+  console.log(`${i + 1}: ${el}`);
+}
+
+// this will give the same output as above
+
 //G ASSIGNMENT OPERATORS
 
 //* OR assignment operator
