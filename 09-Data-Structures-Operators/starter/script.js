@@ -27,29 +27,24 @@ const restaurant = {
     },
   },
 
-  order: function (startIndex, mainIndex) {
+  order(startIndex, mainIndex) {
     return [this.starterMenu[startIndex], this.mainMenu[mainIndex]];
   },
 
-  orderDelivery: function ({
-    starterIndex = 1,
-    mainIndex = 1,
-    time = '20:00',
-    address,
-  }) {
+  orderDelivery({ starterIndex = 1, mainIndex = 1, time = '20:00', address }) {
     console.log(
       `order received: ${this.starterMenu[starterIndex]}, and ${this.mainMenu[mainIndex]} ordered at ${time}, going to ${address}`
     );
   },
 
-  orderPasta: function (ing1, ing2, ing3) {
+  orderPasta(ing1, ing2, ing3) {
     console.log(
       `Here is your delicious pasta with ${ing1}, ${ing2} and ${ing3}`
     );
   },
 
   //uses the rest operator to list the first ingredient and then all others within an array
-  orderPizza: function (mainIngredient, ...otherIngredients) {
+  orderPizza(mainIngredient, ...otherIngredients) {
     console.log(mainIngredient);
     console.log(otherIngredients);
   },
@@ -64,6 +59,31 @@ const rest2 = {
   name: 'La Piazza',
   owner: 'John',
 };
+
+//G Optional Chaining (?.)
+
+console.log(restaurant.openingHours.mon?.open);
+//=> undefined
+//* the '?' queries whether the property '.mon' exists. If it doens't, undefined is returned and the '.open' is not read.
+//* Without the optional chaining, you woudl get an error message rather than 'undefined'.
+
+//* we can use this multiple times in our logic:
+console.log(restaurant.openingHours?.mon?.open);
+
+//* EXAMPLE
+//* loop over the array and log to console whether restuarant is open or closed on teh days
+
+const days = ['mon', 'tues', 'weds', 'thurs', 'fri', 'sat', 'sun'];
+for (const day of days) {
+  console.log(day);
+  restaurant.openingHours[day]?.open ?? 'closed'; //set default value of closed if restuarant not open on that day. Also using the knowledge coalescing operator (??)
+  console.log(`On ${day}, we open at ${open}`);
+}
+
+//* Optional chaining used for checking methods exist
+console.log(restaurant.order?.(0, 1) ?? 'Method does not exist');
+
+//* Optional chaining used for checking arrays
 
 //G FOR-OF LOOPS
 //* loops over an array
