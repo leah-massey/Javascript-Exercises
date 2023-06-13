@@ -60,30 +60,43 @@ const rest2 = {
   owner: 'John',
 };
 
-//G Optional Chaining (?.)
+//G Looping objects
+//property names
+//const properties = Object.keys(openingHours);
+//console.log(properties);
 
-console.log(restaurant.openingHours.mon?.open);
-//=> undefined
+//G Optional Chaining (?.)
+//* if a certain property does not exist then undefined' is returned immediately
+
+//console.log(restaurant.openingHours.mon?.open);
+//=> returns 'undefined' as the restaurant doesn't open on a Monday
 //* the '?' queries whether the property '.mon' exists. If it doens't, undefined is returned and the '.open' is not read.
-//* Without the optional chaining, you woudl get an error message rather than 'undefined'.
+//* Without the optional chaining, you woudd get an error message rather than 'undefined'.
 
 //* we can use this multiple times in our logic:
-console.log(restaurant.openingHours?.mon?.open);
+//console.log(restaurant.openingHours?.mon?.open);
+//=> returns undefined
 
 //* EXAMPLE
 //* loop over the array and log to console whether restuarant is open or closed on teh days
 
-const days = ['mon', 'tues', 'weds', 'thurs', 'fri', 'sat', 'sun'];
+const days = ['mon', 'tue', 'weds', 'thu', 'fri', 'sat', 'sun'];
+
 for (const day of days) {
-  console.log(day);
-  restaurant.openingHours[day]?.open ?? 'closed'; //set default value of closed if restuarant not open on that day. Also using the knowledge coalescing operator (??)
+  const open = restaurant.openingHours[day]?.open ?? 'closed';
   console.log(`On ${day}, we open at ${open}`);
+
+  //set default value of closed if restuarant not open on that day. Also using the //G nullish coalescing operator (??)
 }
 
 //* Optional chaining used for checking methods exist
 console.log(restaurant.order?.(0, 1) ?? 'Method does not exist');
 
 //* Optional chaining used for checking arrays
+
+const users = [{ name: 'leah', email: 'hello@leah.com' }];
+
+console.log(users[0].name ?? 'User array empty');
 
 //G FOR-OF LOOPS
 //* loops over an array
