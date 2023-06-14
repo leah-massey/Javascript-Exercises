@@ -60,10 +60,42 @@ const rest2 = {
   owner: 'John',
 };
 
-//G Looping objects
-//property names
-//const properties = Object.keys(openingHours);
+//G LOOPING OBJECTS
+//* Property NAMES
+
+const properties = Object.keys(restaurant.openingHours);
 //console.log(properties);
+//lists an array of the three property names
+//=> (3) ['thu', 'fri', 'sat']
+
+let openStr = `We are open on ${properties.length} days: `;
+for (const day of properties) {
+  openStr += `${day}, `;
+}
+//console.log(openStr);
+//=> We are open on 3 days: thu, fri, sat,
+
+//property names
+for (const day of properties) {
+  //console.log(day);
+}
+//lists the three property names:
+// thu
+// fri
+// sat
+
+//* Property VALUES
+
+const values = Object.values(restaurant.openingHours);
+//console.log(values);
+
+//* Entire object
+const entries = Object.entries(restaurant.openingHours);
+console.log(entries);
+
+for (const [key, { open, close }] of entries) {
+  console.log(`On ${key} we open at ${open} and close at ${close}.`);
+}
 
 //G Optional Chaining (?.)
 //* if a certain property does not exist then undefined' is returned immediately
