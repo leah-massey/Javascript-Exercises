@@ -60,6 +60,54 @@ const rest2 = {
   owner: 'John',
 };
 
+//G MAPS
+//* a data structure that we can use to add values to keys.
+//* keys can be anything - objects, arrays or other maps
+//* the easiest way to create a map is to make an empty map first. To fill up the map we use the set method.
+
+const rest = new Map();
+rest.set('name', 'Classico Italiano');
+rest.set(1, 'Firenze, Italy');
+console.log(rest.set(2, 'Lisbon, Portugal'));
+//=> Map(3) {'name' => 'Classico Italiano', 1 => 'Firenze, Italy', 2 => 'Lisbon, Portugal'}
+
+// we can chain values
+rest
+  .set('categories', ['Italian', 'Pizzeria', 'Vegetarian', 'Organic'])
+  .set('open', 11)
+  .set('close', 23)
+  .set(true, 'We are open')
+  .set(false, 'We are closed');
+
+console.log(rest.get('name'));
+//=> Classico Italiano
+console.log(rest.get('1'));
+//=> Firenze, Italy
+
+const time = 21;
+//to work out if the restaurant is open / closed at this time:
+console.log(rest.get(time > rest.get('open') && time < rest.get('close')));
+
+//check if a map contains a certain key:
+console.log(rest.has('categories'));
+//=> true
+
+//removes the key
+rest.delete(2);
+
+//check the length
+console.log(rest.size);
+//=> true
+
+//remove all items from the map
+//rest.clear
+
+rest.set([1, 2], 'Test');
+//creates an array as key
+
+rest.set(document.querySelector('h1'), 'Heading');
+//=>returns h1 object as key
+
 //G SETs
 //* a set is a collection of unique values
 //* the order of elements is irrelevant
