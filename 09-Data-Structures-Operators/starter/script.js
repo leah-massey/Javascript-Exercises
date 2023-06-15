@@ -60,6 +60,68 @@ const rest2 = {
   owner: 'John',
 };
 
+//G SETs
+//* a set is a collection of unique values
+//* the order of elements is irrelevant
+//* note that there is no way of getting values out of a set. There are no index values
+//* if you needed to do this you would use an array
+//*
+
+const ordersSet = new Set(['Pasta', 'Pizza', 'Risotto', 'Pasta']);
+//console.log(ordersSet);
+//=> Set(3) {'Pasta', 'Pizza', 'Risotto'}
+// note that the duplicate pasta has been removed.
+
+//* check length of set:
+//console.log(ordersSet.size);
+//=> 3
+
+//* check if element is included in set:
+//console.log(ordersSet.has('Pizza'));
+//=> true
+
+//* add new elements
+ordersSet.add('Garlic Bread');
+ordersSet.add('Garlic Bread');
+
+//console.log(ordersSet);
+//=> Set(4) {'Pasta', 'Pizza', 'Risotto', 'Garlic Bread'}
+// note garlic bread only added once as sets only have unique values.
+
+//* delete elements
+ordersSet.delete('Pizza');
+//onsole.log(ordersSet);
+//=>Set(3) {'Pasta', 'Risotto', 'Garlic Bread'}
+
+//* delete all elements
+//ordersSet.clear();
+
+//* sets are also iterables. EG below
+console.log(new Set('Jonas'));
+//=> Set(5) {'J', 'o', 'n', 'a', 's'}
+
+for (const order of ordersSet) console.log(order);
+// Pasta
+// Risotto
+//. Garlic Bread
+
+//* EXAMPLE
+const staff = ['Waiter', 'Chef', 'Waiter', 'Manager', 'Chef', 'Waiter'];
+//using the spread operator, we can turn the set into an array (below)
+const staffUnique = [...new Set(staff)];
+console.log(staffUnique);
+//=> (3) ['Waiter', 'Chef', 'Manager']
+
+//to find ouy how many unique positions there are :
+console.log(
+  new Set(['Waiter', 'Chef', 'Waiter', 'Manager', 'Chef', 'Waiter']).size
+);
+//=> 3
+
+console.log(new Set('leahmassey').size);
+//returns the number of unique characters in a string
+//=> 7
+
 //G LOOPING OBJECTS
 //* Property NAMES
 
