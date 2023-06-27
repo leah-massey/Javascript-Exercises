@@ -17,16 +17,20 @@ const Car = function (make, speed) {
 };
 
 Car.prototype.accelerate = function () {
-  console.log(this.speed + 10);
+  this.speed += 10;
+  console.log(`the ${this.make} is travelling at ${this.speed}mph`);
 };
 
 Car.prototype.break = function () {
-  console.log(this.speed - 5);
+  this.speed -= 5;
+  console.log(`the ${this.make} is travelling at ${this.speed}mph`);
 };
 
 const car1 = new Car("Audi", 140);
 const car2 = new Car("VW", 90);
 
-console.log(car1.make);
-console.log(car1.accelerate(), car1.accelerate());
-console.log(car2.break(), car2.accelerate());
+car1.make;
+car1.accelerate();
+car1.accelerate();
+car2.break();
+car2.accelerate();
