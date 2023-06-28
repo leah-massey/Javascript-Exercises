@@ -79,25 +79,55 @@ console.log(arr.unique());
 //* class declaration
 
 class PersonCl {
-  constructor(firstName, birthYear) {
-    this.firstName = firstName;
+  constructor(fullName, birthYear) {
+    this.fullName = fullName;
     this.birthYear = birthYear;
   }
 
-  // G Methods will be added to the .prototype property
+  //G Methods will be added to the .prototype property
   calcAge() {
     console.log(2037 - this.birthYear);
   }
 
   greet() {
-    console.log(`hey ${this.firstName}`);
+    console.log(`hey ${this.fullName}`);
+  }
+
+  set fullName(name) {
+    if (name.includes(' ')) this._fullName = name; //underscore must be used!
+    else alert(`${name} is not a full name`);
+  }
+
+  get fullName() {
+    return this._fullName;
   }
 }
 
-const jessica = new PersonCl('Jessica', 1921);
+const jessica = new PersonCl('Jessica May', 1921);
 console.log(jessica);
 jessica.calcAge();
 jessica.greet();
+
+//* GETTERS AND SETTERS
+
+const account = {
+  owner: 'jonas',
+  movements: [200, 120, 500, 300],
+
+  get latest() {
+    return this.movements.slice(-1).pop();
+  },
+
+  set latest(mov) {
+    this.movements.push(mov);
+  },
+};
+
+console.log(account.latest);
+//=> 300
+account.latest = 50;
+console.log(account.movements);
+//=> [200, 120, 500, 300, 50]
 
 //* OBJECT.create
 // less commonly used, but important to know!
